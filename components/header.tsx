@@ -25,7 +25,7 @@ export default function Header() {
           <li><a href="#experiencia">Experiência</a></li>
           <li><a href="#projetos">Projetos</a></li>
           <li><a href="#ilustracoes">Ilustrações</a></li>
-          <li><a href="#contato">Contato</a></li>
+
         </ul>
 
         {/* Menu mobile */}
@@ -60,9 +60,6 @@ export default function Header() {
                 <a href="#ilustracoes" className="w-full">Ilustrações</a>
               </DropdownMenuItem>
 
-              <DropdownMenuItem>
-                <a href="#contato" className="w-full">Contato</a>
-              </DropdownMenuItem>
 
             </DropdownMenuContent>
 

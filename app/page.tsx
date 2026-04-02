@@ -1,5 +1,7 @@
+"use client"
+import { useState, useEffect } from "react"
 import Image from "next/image"
-import { FaInstagram, FaLinkedin, FaDribbble, FaBriefcase, FaArrowRight } from "react-icons/fa"
+import { FaInstagram, FaFacebook, FaEnvelope, FaBriefcase, FaArrowRight } from "react-icons/fa"
 import Header from "../components/header"
 import {
   Dialog,
@@ -33,6 +35,20 @@ const portfolioItems = [
     src: "/integra.png",
     desc: "A marca Integra Publicidade e Propaganda reflete união, criatividade e eficiência, com foco em soluções completas e inovadoras. Seu nome e identidade visual simbolizam conexão, colaboração e dinamismo, posicionando a agência como parceira estratégica para conectar marcas ao público com autenticidade e impacto.",
   },
+  {
+    id: 4,
+    title: "BRUXA NORDESTINA",
+    category: "Criação de Arte / Logotipo",
+    src: "/ARTE BANNER.png",
+    desc: ""
+  },
+  {
+    id: 5,
+    title: "FEIRA CULTURA",
+    category: "Criação de Arte / Logotipo",
+    src: "/FEIRA CULTURA.png",
+    desc: "",
+  },
 ]
 
 const ilustracoes = [
@@ -55,249 +71,169 @@ const ilustracoes = [
 ]
 
 export default function Home() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const updateMousePosition = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener("mousemove", updateMousePosition)
+    return () => window.removeEventListener("mousemove", updateMousePosition)
+  }, [])
+
   return (
-    <div className="bg-black text-white min-h-screen font-sans selection:bg-purple-500/30">
+    <div className="bg-gradient-to-b from-black via-black to-[#2a0845] text-white min-h-screen font-sans selection:bg-purple-500/30 relative">
+      
+      <div
+        className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(168, 85, 247, 0.08), transparent 80%)`,
+        }}
+      />
+
       <Header />
 
-      <div className="flex flex-col items-center gap-3 pt-24">
+      <div className="flex flex-col items-center gap-3">
 
-        {/* --- SEÇÃO HOME --- */}
         <section
           id="home"
-          className="w-full max-w-[1200px] flex flex-col md:flex-row justify-between items-center px-6 py-20 lg:py-32 gap-12"
+          className="relative w-full flex justify-center pt-24 min-h-screen items-center"
         >
-          <div className="flex flex-col max-w-[600px] z-10">
-            <div className="flex items-center gap-3 border border-white/10 bg-white/5 rounded-full px-5 py-2 w-fit mb-8 shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span>
-              <span className="text-xs text-gray-300 font-semibold tracking-widest uppercase">DISPONÍVEL PARA FREELANCE</span>
-            </div>
-
-            <h2 className="text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-tight">
-              Olá, me chamo
-            </h2>
-            <h1 className="text-6xl lg:text-[5.5rem] font-extrabold text-[#a855f7] tracking-tighter mt-1 mb-6 drop-shadow-md">
-              Wescley Costa
-            </h1>
-
-            <p className="text-gray-400 text-[17px] leading-relaxed max-w-lg">
-              Transformando ideias em experiências visuais memoráveis através do design e da ilustração.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-6 mt-10">
-              <a href="#" className="bg-[#a855f7] hover:bg-purple-500 text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide flex items-center gap-3 transition-transform duration-300 hover:scale-105 shadow-[0_0_20px_rgba(168,85,247,0.3)]">
-                DESIGNER / ILUSTRADOR <FaArrowRight />
-              </a>
-
-              <div className="flex items-center gap-6 border border-white/10 bg-white/5 rounded-full px-8 py-4">
-                <a href="https://www.instagram.com/akumakoji/" target="_blank" className="text-gray-400 hover:text-white transition-colors">
-                  <FaInstagram size={18} />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <FaLinkedin size={18} />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                  <FaDribbble size={18} />
-                </a>
-              </div>
-            </div>
+          <div className="absolute top-0 left-0 w-full h-full z-0 overflow-hidden">
+            <Image
+              src="/CAPA CURU.png" 
+              alt="Background Arte"
+              fill
+              className="object-cover opacity-50"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
           </div>
 
-          <div className="relative flex justify-center items-center md:mr-10">
-            <div className="absolute inset-0 rounded-full bg-[#a855f7] blur-[100px] opacity-20"></div>
-            <div className="relative p-2 rounded-full border border-white/10 bg-gradient-to-br from-white/5 to-transparent shadow-2xl">
-              <Image
-                src="/wescley.jpg"
-                alt="Wescley Costa"
-                width={450}
-                height={450}
-                className="rounded-full object-cover"
-              />
+          <div className="w-full max-w-[1200px] flex flex-col md:flex-row justify-between items-center px-6 py-20 lg:py-32 gap-12 relative z-10">
+            <div className="flex flex-col max-w-[600px] z-10">
+              <div className="flex items-center gap-3 border border-white/20 bg-black/40 backdrop-blur-sm rounded-full px-5 py-2 w-fit mb-8 shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span>
+                <span className="text-xs text-gray-200 font-semibold tracking-widest uppercase">DISPONÍVEL PARA FREELANCE</span>
+              </div>
+
+              <div className="pl-16 flex flex-col mb-8 select-none cursor-default">
+                <h2
+                  className="text-white text-5xl lg:text-6xl font-extrabold tracking-tight mb-[-10px] ml-4 relative z-10"
+                  style={{ textShadow: '0 0 15px rgba(168, 85, 247, 0.9)' }}
+                >
+                  iai, sou
+                </h2>
+                <h1
+                  className="text-7xl lg:text-[8.5rem] font-black tracking-tighter -rotate-2 text-[#a855f7] relative"
+                  style={{
+                    WebkitTextStroke: '3px white',
+                    textShadow: '0 0 20px rgba(168,85,247,0.8), 0 0 40px rgba(168,85,247,0.6), 0 0 60px rgba(168,85,247,0.4)',
+                    lineHeight: '1.1'
+                  }}
+                >
+                  Wess
+                </h1>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-6 mt-10">
+                <a href="#" className="bg-[#a855f7] hover:bg-purple-500 text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide flex items-center gap-3 transition-transform duration-300 hover:scale-105 shadow-[0_0_20px_rgba(168,85,247,0.4)]">
+                  DESIGNER / ILUSTRADOR <FaArrowRight />
+                </a>
+
+                <div className="flex items-center gap-6 border border-white/20 bg-black/40 backdrop-blur-sm rounded-full px-8 py-4">
+                  <a href="https://www.instagram.com/akumakoji/" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-[#a855f7] transition-colors duration-300 drop-shadow-md">
+                    <FaInstagram size={20} />
+                  </a>
+                  <a href="https://www.facebook.com/wescley.costa.771169/" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-[#a855f7] transition-colors duration-300 drop-shadow-md">
+                    <FaFacebook size={20} />
+                  </a>
+                  <a href="mailto:Contato.akumakoji@gmail.com" className="text-gray-300 hover:text-[#a855f7] transition-colors duration-300 drop-shadow-md">
+                    <FaEnvelope size={20} />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative flex justify-center items-center md:mr-10">
+              <div className="absolute inset-0 rounded-full bg-[#a855f7] blur-[100px] opacity-30"></div>
+              <div className="relative p-2 rounded-full border border-white/20 bg-gradient-to-br from-white/10 to-transparent shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-sm">
+                <Image
+                  src="/wescley.jpg"
+                  alt="Wescley Costa"
+                  width={400}
+                  height={400}
+                  className="rounded-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </section>
 
-        {/* --- SEÇÃO SOBRE MIM --- */}
         <section
           id="sobre"
-          className="w-full max-w-[1200px] px-6 py-24 flex flex-col gap-12"
+          className="relative z-10 w-full max-w-[1200px] px-6 py-24 flex flex-col gap-12"
         >
           <div className="flex items-center gap-4">
-            <span className="w-12 h-[3px] bg-[#a855f7] rounded-full"></span>
+            <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
               Sobre Mim
             </h2>
           </div>
 
-          <article className="bg-gradient-to-br from-[#1a1a1a] to-[#121212] border border-white/5 rounded-3xl p-8 md:p-14 text-gray-300 text-[17px] leading-relaxed space-y-6 shadow-xl">
-            <p>
+          <article className="bg-gradient-to-br from-[#1a1a1a]/80 to-[#0a0a0a]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/30 transition-colors duration-500 rounded-3xl p-8 md:p-14 text-gray-300 text-[17px] leading-relaxed space-y-6 shadow-2xl relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_2s_infinite]"></div>
+            <p className="relative z-10">
               Sou um Designer Gráfico e Ilustrador apaixonado por criar identidades visuais
               impactantes e ilustrações cheias de personalidade. Com anos de experiência
               no mercado criativo, busco sempre unir técnica e sensibilidade para entregar
               projetos que não apenas parecem bons, mas que comunicam a essência de cada marca.
             </p>
-            <p>
+            <p className="relative z-10">
               Minha trajetória inclui passagens por emissoras de rádio e agências, onde
               pude aprimorar minha versatilidade em diferentes formatos: desde a criação
               de marcas (branding) até a concepção de peças para grandes eventos,
               social media e campanhas publicitárias offline e digitais.
             </p>
-            <p>
+            <p className="relative z-10">
               Acredito que o design tem o poder de transformar a maneira como as pessoas
               percebem o mundo ao seu redor, e é essa crença que move o meu trabalho todos os dias.
             </p>
           </article>
         </section>
 
-        {/* --- SEÇÃO EXPERIÊNCIA --- */}
         <section
           id="experiencia"
-          className="w-full max-w-[1200px] mx-auto px-6 py-24 flex flex-col gap-16 md:gap-20"
+          className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24 flex flex-col gap-16 md:gap-20"
         >
           <div className="flex items-center gap-4">
-            <span className="w-12 h-[3px] bg-[#a855f7] rounded-full"></span>
+            <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Experiência</h2>
           </div>
 
           <div className="relative mt-4">
-            <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 md:-translate-x-1/2"></div>
+            <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 md:-translate-x-1/2 shadow-[0_0_15px_rgba(168,85,247,0.3)]"></div>
 
             <div className="flex flex-col gap-16 md:gap-20">
               
-              {/* CARD 1 */}
               <div className="relative flex flex-col md:flex-row items-center w-full group">
                 <div className="hidden md:block w-1/2 pr-16"></div>
                 
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-colors duration-300">
+                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
                   <FaBriefcase size={16} />
                 </div>
 
                 <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
-                  <div className="bg-[#161616] border border-white/5 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-transform duration-300 shadow-xl">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Visual</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap">Atualmente</span>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px]">Banda Cintura Fina</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8">
-                      Responsável por toda a parte visual da marca, tanto digital quanto física. Criei conteúdo para o Instagram, desenvolvendo campanhas visuais que reforçaram a identidade da banda e engajaram o público, trabalhando em estreita colaboração com os membros para garantir que a estética refletisse sua essência e estilo musical.
-                    </p>
-                    <div className="flex gap-2 flex-wrap">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Premiere</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CARD 2 */}
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
-                  <div className="bg-[#161616] border border-white/5 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-transform duration-300 shadow-xl">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3">
+                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
                       <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap">2022 - 2025</span>
+                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">2018 - 2019</span>
                     </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px]">Rede Xodó FM / Sistema RTV</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8">
-                      Desenvolvimento e implementação de projetos criativos, incluindo materiais gráficos e campanhas digitais. Atuação sob prazos desafiadores, colaborando com diferentes equipes para criar soluções que atendem às necessidades específicas da marca, inovando e impactando o público de maneira eficaz.
-                    </p>
-                    <div className="flex gap-2 flex-wrap">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Premiere</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-colors duration-300">
-                  <FaBriefcase size={16} />
-                </div>
-                
-                <div className="hidden md:block w-1/2 pl-16"></div>
-              </div>
-
-              {/* CARD 3 */}
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="hidden md:block w-1/2 pr-16"></div>
-                
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-colors duration-300">
-                  <FaBriefcase size={16} />
-                </div>
-
-                <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
-                  <div className="bg-[#161616] border border-white/5 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-transform duration-300 shadow-xl">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap">2021</span>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px]">Localine LTDA</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8">
-                      Responsável pelas plotagens em uma empresa de transporte, aplicando criatividade em designs funcionais. Foco em garantir o impacto visual, considerando aspectos rigorosos de durabilidade, legibilidade e adaptação a diferentes tipos de veículos e superfícies.
-                    </p>
-                    <div className="flex gap-2 flex-wrap">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Premiere</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* CARD 4 */}
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
-                  <div className="bg-[#161616] border border-white/5 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-transform duration-300 shadow-xl">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap">2021</span>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px]">Prefeitura de Poço Redondo - SE</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8">
-                      Criação de projetos visuais para materiais impressos e campanhas para o Instagram. Atuação com foco em combining estética e funcionalidade para engajar o público local e transmitir as mensagens institucionais de forma clara e eficaz.
-                    </p>
-                    <div className="flex gap-2 flex-wrap">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-colors duration-300">
-                  <FaBriefcase size={16} />
-                </div>
-                
-                <div className="hidden md:block w-1/2 pl-16"></div>
-              </div>
-
-              {/* CARD 5 */}
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="hidden md:block w-1/2 pr-16"></div>
-                
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-colors duration-300">
-                  <FaBriefcase size={16} />
-                </div>
-
-                <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
-                  <div className="bg-[#161616] border border-white/5 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-transform duration-300 shadow-xl">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap">2018 - 2019</span>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px]">Filial de Marketing (Mary Kay)</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8">
+                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Filial de Marketing (Mary Kay)</p>
+                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
                       Atuei como designer gráfico com foco em demandas variadas do setor de marketing. Desenvolvi habilidades em gerenciamento e organização de processos de forma eficaz, lidando tanto com rotinas criativas quanto administrativas.
                     </p>
-                    <div className="flex gap-2 flex-wrap">
+                    <div className="flex gap-2 flex-wrap relative z-10">
                       <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
                       <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
                       <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Excel</span>
@@ -306,17 +242,153 @@ export default function Home() {
                 </div>
               </div>
 
+              <div className="relative flex flex-col md:flex-row items-center w-full group">
+                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
+                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
+                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">2021</span>
+                    </div>
+                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Localine LTDA</p>
+                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
+                      Responsável pelas plotagens em uma empresa de transporte, aplicando criatividade em designs funcionais. Foco em garantir o impacto visual, considerando aspectos rigorosos de durabilidade, legibilidade e adaptação a diferentes tipos de veículos e superfícies.
+                    </p>
+                    <div className="flex gap-2 flex-wrap relative z-10">
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Premiere</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
+                  <FaBriefcase size={16} />
+                </div>
+                
+                <div className="hidden md:block w-1/2 pl-16"></div>
+              </div>
+
+              <div className="relative flex flex-col md:flex-row items-center w-full group">
+                <div className="hidden md:block w-1/2 pr-16"></div>
+                
+                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
+                  <FaBriefcase size={16} />
+                </div>
+
+                <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
+                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
+                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">2021</span>
+                    </div>
+                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Prefeitura de Poço Redondo - SE</p>
+                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
+                      Criação de projetos visuais para materiais impressos e campanhas para o Instagram. Atuação com foco em combining estética e funcionalidade para engajar o público local e transmitir as mensagens institucionais de forma clara e eficaz.
+                    </p>
+                    <div className="flex gap-2 flex-wrap relative z-10">
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative flex flex-col md:flex-row items-center w-full group">
+                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
+                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
+                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">2022 - 2025</span>
+                    </div>
+                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Rede Xodó FM / Sistema RTV</p>
+                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
+                      Desenvolvimento e implementação de projetos criativos, incluindo materiais gráficos e campanhas digitais. Atuação sob prazos desafiadores, colaborando com diferentes equipes para criar soluções que atendem às necessidades específicas da marca, inovando e impactando o público de maneira eficaz.
+                    </p>
+                    <div className="flex gap-2 flex-wrap relative z-10">
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Premiere</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
+                  <FaBriefcase size={16} />
+                </div>
+                
+                <div className="hidden md:block w-1/2 pl-16"></div>
+              </div>
+
+              <div className="relative flex flex-col md:flex-row items-center w-full group">
+                <div className="hidden md:block w-1/2 pr-16"></div>
+                
+                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
+                  <FaBriefcase size={16} />
+                </div>
+
+                <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
+                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
+                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">Atualmente</span>
+                    </div>
+                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Prefeitura de Poço Redondo - SE</p>
+                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
+                      Criação de projetos visuais para materiais impressos e campanhas para o Instagram. Atuação com foco em combining estética e funcionalidade para engajar o público local e transmitir as mensagens institucionais de forma clara e eficaz.
+                    </p>
+                    <div className="flex gap-2 flex-wrap relative z-10">
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative flex flex-col md:flex-row items-center w-full group">
+                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
+                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Visual</h3>
+                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">Atualmente</span>
+                    </div>
+                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Banda Cintura Fina</p>
+                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
+                      Responsável por toda a parte visual da marca, tanto digital quanto física. Criei conteúdo para o Instagram, desenvolvendo campanhas visuais que reforçaram a identidade da banda e engajaram o público, trabalhando em estreita colaboração com os membros para garantir que a estética refletisse sua essência e estilo musical.
+                    </p>
+                    <div className="flex gap-2 flex-wrap relative z-10">
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Premiere</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
+                  <FaBriefcase size={16} />
+                </div>
+                
+                <div className="hidden md:block w-1/2 pl-16"></div>
+              </div>
+
             </div>
           </div>
         </section>
 
-        {/* --- SEÇÃO PORTFÓLIO --- */}
-        <section id="projetos" className="w-full max-w-[1500px] mx-auto px-6 py-24 flex flex-col gap-12">
+        <section id="projetos" className="relative z-10 w-full max-w-[1500px] mx-auto px-6 py-24 flex flex-col gap-12">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4">
-                <span className="w-12 h-[3px] bg-[#a855f7] rounded-full"></span>
+                <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
                 <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Portfólio</h2>
               </div>
               <p className="text-gray-400 max-w-xl text-[17px] leading-relaxed">
@@ -324,7 +396,6 @@ export default function Home() {
                 por inovação visual e adequação ao propósito da marca.
               </p>
             </div>
-            
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
@@ -332,7 +403,7 @@ export default function Home() {
               <Dialog key={item.id}>
                 
                 <DialogTrigger asChild>
-                  <button className="relative block w-full text-left cursor-pointer overflow-hidden rounded-3xl border border-white/5 transition-all duration-300 group bg-[#161616]">
+                  <button className="relative block w-full text-left cursor-pointer overflow-hidden rounded-3xl border border-white/5 transition-all duration-300 group bg-[#161616]/60 backdrop-blur-sm hover:border-purple-500/40">
                     
                     <Image
                       src={item.src}
@@ -362,7 +433,7 @@ export default function Home() {
                   </button>
                 </DialogTrigger>
 
-                <DialogContent className="bg-[#121212] border border-white/5 text-white w-[95vw] sm:max-w-[800px] rounded-3xl p-8 flex flex-col gap-6 shadow-2xl">
+                <DialogContent className="bg-[#121212]/95 backdrop-blur-xl border border-white/10 text-white w-[95vw] sm:max-w-[1200px] max-h-[90vh] overflow-y-auto rounded-3xl p-8 flex flex-col gap-6 shadow-[0_0_50px_rgba(0,0,0,0.8)]">
                   <DialogHeader>
                     <DialogTitle className="text-2xl font-bold text-white text-center font-serif tracking-wide">
                       {item.title}
@@ -372,19 +443,21 @@ export default function Home() {
 
                   <div className="flex flex-col items-center gap-6">
                     
-                    <div className="w-full bg-[#1e1e1e] rounded-2xl overflow-hidden p-1 border border-white/5 shadow-inner">
+                    <div className="w-full bg-[#1e1e1e]/50 rounded-2xl overflow-hidden p-1 border border-white/5 shadow-inner flex justify-center items-center">
                       <Image 
                         src={item.src} 
                         alt={item.title} 
-                        width={1200} 
-                        height={800} 
-                        className="rounded-xl object-contain w-full max-h-[55vh]" 
+                        width={1600} 
+                        height={900} 
+                        className="rounded-xl object-contain w-full max-h-[65vh]" 
                       />
                     </div>
                     
-                    <p className="text-gray-200 text-center text-[15px] leading-relaxed max-w-[600px] font-serif">
-                      {item.desc}
-                    </p>
+                    {item.desc && (
+                      <p className="text-gray-200 text-center text-[15px] leading-relaxed max-w-[800px] font-serif">
+                        {item.desc}
+                      </p>
+                    )}
                     
                     <DialogTrigger asChild>
                       <button className="mt-2 px-8 py-2 bg-[#a855f7] hover:bg-purple-500 border-2 border-transparent hover:border-white text-white font-bold text-sm rounded-full transition-all duration-300 hover:scale-105 pointer-events-auto">
@@ -398,34 +471,34 @@ export default function Home() {
           </div>
         </section>
 
-        {/* --- SEÇÃO ILUSTRAÇÕES --- */}
         <section
           id="ilustracoes"
-          className="w-full max-w-[1200px] px-6 py-24 flex flex-col gap-12"
+          className="relative z-10 w-full max-w-[1200px] px-6 py-24 flex flex-col gap-12"
         >
           <div className="flex flex-col gap-4">
             <div className="flex items-center justify-center gap-4">
-              <span className="w-12 h-[3px] bg-[#a855f7] rounded-full"></span>
+              <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
               <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight text-center">
                 Galeria de Ilustrações
               </h2>
-              <span className="w-12 h-[3px] bg-[#a855f7] rounded-full"></span>
+              <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-1">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
             {ilustracoes.map((img) => (
               <Dialog key={img.id}>
                 
                 <DialogTrigger asChild>
-                  <button className="overflow-hidden transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_15px_rgba(168,85,247,0.3)] group cursor-pointer bg-[#1a1a1a] p-1">
+                  <button className="overflow-hidden rounded-md transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:z-10 relative group cursor-pointer bg-[#1a1a1a]/50 backdrop-blur-sm p-1">
                     <Image
                       src={img.src}
                       alt="Ilustração miniatura"
                       width={500}
                       height={600}
-                      className="object-cover w-full h-[400px] transition-transform duration-500 group-hover:scale-110"
+                      className="object-cover w-full h-[400px] rounded-sm transition-transform duration-500 group-hover:scale-110"
                     />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
                   </button>
                 </DialogTrigger>
 
@@ -448,7 +521,7 @@ export default function Home() {
                     alt="Ilustração Ampliada"
                     width={2000}
                     height={2000}
-                    className="w-full h-full object-contain drop-shadow-2xl rounded-md"
+                    className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-md"
                   />
                 </DialogContent>
               </Dialog>
