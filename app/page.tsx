@@ -37,9 +37,17 @@ const portfolioItems = [
   },
   {
     id: 4,
-    title: "BRUXA NORDESTINA",
+    title: "BRUXA ARRÊTADA",
     category: "Criação de Arte / Logotipo",
     src: "/ARTE BANNER.png",
+    images: [
+      "/PARA INSTAGRAM 3.png",
+  "/WITCH 3.png",
+  "/PARA INSTAGRAM.png",
+  "/PARA INSTAGRAM BRANCA.png",
+  "/ARTE BANNER.png"
+
+],
     desc: ""
   },
   {
@@ -74,9 +82,9 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-  setMousePosition({ x: e.clientX, y: e.clientY })
-}
+    const updateMousePosition = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
     window.addEventListener("mousemove", updateMousePosition)
     return () => window.removeEventListener("mousemove", updateMousePosition)
   }, [])
@@ -105,6 +113,7 @@ export default function Home() {
               alt="Background Arte"
               fill
               className="object-cover opacity-50"
+              style={{ objectPosition: "70% center" }}
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
@@ -135,6 +144,10 @@ export default function Home() {
                   Wess
                 </h1>
               </div>
+
+              <p className="text-gray-300 text-[17px] leading-relaxed max-w-lg drop-shadow-md bg-black/20 p-2 rounded-lg backdrop-blur-sm">
+                Transformando ideias em experiências visuais memoráveis através do design e da ilustração.
+              </p>
 
               <div className="flex flex-wrap items-center gap-6 mt-10">
                 <a href="#" className="bg-[#a855f7] hover:bg-purple-500 text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide flex items-center gap-3 transition-transform duration-300 hover:scale-105 shadow-[0_0_20px_rgba(168,85,247,0.4)]">
@@ -184,20 +197,13 @@ export default function Home() {
           <article className="bg-gradient-to-br from-[#1a1a1a]/80 to-[#0a0a0a]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/30 transition-colors duration-500 rounded-3xl p-8 md:p-14 text-gray-300 text-[17px] leading-relaxed space-y-6 shadow-2xl relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-[100%] group-hover:animate-[shimmer_2s_infinite]"></div>
             <p className="relative z-10">
-              Sou um Designer Gráfico e Ilustrador apaixonado por criar identidades visuais
-              impactantes e ilustrações cheias de personalidade. Com anos de experiência
-              no mercado criativo, busco sempre unir técnica e sensibilidade para entregar
-              projetos que não apenas parecem bons, mas que comunicam a essência de cada marca.
+              Sou Wescley, ilustrador e designer. Gosto de trabalhar com arte inspirada em fantasia e mundos imaginários. Muitas das minhas referências vêm de histórias como The Lord of the Rings, que sempre influenciaram meu gosto por cenários épicos e personagens marcantes.
             </p>
             <p className="relative z-10">
-              Minha trajetória inclui passagens por emissoras de rádio e agências, onde
-              pude aprimorar minha versatilidade em diferentes formatos: desde a criação
-              de marcas (branding) até a concepção de peças para grandes eventos,
-              social media e campanhas publicitárias offline e digitais.
+              No tempo livre, gosto de jogar League of Legends e Final Fantasy, além de ler livros de fantasia. Também sou pisciano, o que talvez explique minha conexão com criatividade e imaginação.
             </p>
             <p className="relative z-10">
-              Acredito que o design tem o poder de transformar a maneira como as pessoas
-              percebem o mundo ao seu redor, e é essa crença que move o meu trabalho todos os dias.
+              A arte, para mim, é uma forma de explorar esses mundos e transformar inspiração em imagem.
             </p>
           </article>
         </section>
@@ -225,9 +231,8 @@ export default function Home() {
 
                 <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
                   <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">2018 - 2019</span>
+                    <div className="flex flex-col mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">2018 - 2019</h3>
                     </div>
                     <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Filial de Marketing (Mary Kay)</p>
                     <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
@@ -245,9 +250,8 @@ export default function Home() {
               <div className="relative flex flex-col md:flex-row items-center w-full group">
                 <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
                   <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">2021</span>
+                    <div className="flex flex-col mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">2021</h3>
                     </div>
                     <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Localine LTDA</p>
                     <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
@@ -280,9 +284,8 @@ export default function Home() {
 
                 <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
                   <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">2021</span>
+                    <div className="flex flex-col mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">2021</h3>
                     </div>
                     <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Prefeitura de Poço Redondo - SE</p>
                     <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
@@ -299,9 +302,8 @@ export default function Home() {
               <div className="relative flex flex-col md:flex-row items-center w-full group">
                 <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
                   <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">2022 - 2025</span>
+                    <div className="flex flex-col mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">2022 - 2025</h3>
                     </div>
                     <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Rede Xodó FM / Sistema RTV</p>
                     <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
@@ -334,32 +336,13 @@ export default function Home() {
 
                 <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
                   <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Gráfico</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">Atualmente</span>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Prefeitura de Poço Redondo - SE</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
-                      Criação de projetos visuais para materiais impressos e campanhas para o Instagram. Atuação com foco em combining estética e funcionalidade para engajar o público local e transmitir as mensagens institucionais de forma clara e eficaz.
-                    </p>
-                    <div className="flex gap-2 flex-wrap relative z-10">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
-                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Designer Visual</h3>
-                      <span className="text-xs font-semibold bg-[#2a1442] text-purple-300 px-4 py-1.5 rounded-full w-fit whitespace-nowrap shadow-[0_0_10px_rgba(168,85,247,0.2)]">Atualmente</span>
+                    <div className="flex flex-col mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">2021 - 2025</h3>
                     </div>
                     <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Banda Cintura Fina</p>
                     <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
                       Responsável por toda a parte visual da marca, tanto digital quanto física. Criei conteúdo para o Instagram, desenvolvendo campanhas visuais que reforçaram a identidade da banda e engajaram o público, trabalhando em estreita colaboração com os membros para garantir que a estética refletisse sua essência e estilo musical.
+
                     </p>
                     <div className="flex gap-2 flex-wrap relative z-10">
                       <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
@@ -368,6 +351,23 @@ export default function Home() {
                       <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
                       <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
                       <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative flex flex-col md:flex-row items-center w-full group">
+                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
+                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
+                    <div className="flex flex-col mb-3 relative z-10">
+                      <h3 className="text-white font-bold text-2xl tracking-tight">Atualmente</h3>
+                    </div>
+                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Prefeitura de Poço Redondo - SE</p>
+                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
+                        Criação de projetos visuais para materiais impressos e campanhas para o Instagram. Atuação com foco em combining estética e funcionalidade para engajar o público local e transmitir as mensagens institucionais de forma clara e eficaz.                    </p>
+                    <div className="flex gap-2 flex-wrap relative z-10">
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
+                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
                     </div>
                   </div>
                 </div>
@@ -443,14 +443,17 @@ export default function Home() {
 
                   <div className="flex flex-col items-center gap-6">
                     
-                    <div className="w-full bg-[#1e1e1e]/50 rounded-2xl overflow-hidden p-1 border border-white/5 shadow-inner flex justify-center items-center">
-                      <Image 
-                        src={item.src} 
-                        alt={item.title} 
-                        width={1600} 
-                        height={900} 
-                        className="rounded-xl object-contain w-full max-h-[65vh]" 
-                      />
+                    <div className="w-full bg-[#1e1e1e]/50 rounded-2xl overflow-hidden p-1 border border-white/5 shadow-inner flex flex-col gap-4 justify-center items-center">
+                      {(item.images || [item.src]).map((imgSrc, idx) => (
+                        <Image 
+                          key={idx}
+                          src={imgSrc} 
+                          alt={`${item.title} ${idx + 1}`} 
+                          width={1600} 
+                          height={900} 
+                          className="rounded-xl object-contain w-full max-h-[65vh]" 
+                        />
+                      ))}
                     </div>
                     
                     {item.desc && (
