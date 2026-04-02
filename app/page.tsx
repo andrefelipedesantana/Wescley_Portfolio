@@ -39,7 +39,7 @@ const portfolioItems = [
     id: 4,
     title: "BRUXA ARRÊTADA",
     category: "Criação de Arte / Logotipo",
-    src: "/ARTE BANNER.png",
+    src: "/PARA INSTAGRAM 3.png",
     images: [
       "/PARA INSTAGRAM 3.png",
   "/WITCH 3.png",
@@ -52,9 +52,13 @@ const portfolioItems = [
   },
   {
     id: 5,
-    title: "FEIRA CULTURA",
+    title: "JOGO DO DINHEIRO",
     category: "Criação de Arte / Logotipo",
-    src: "/FEIRA CULTURA.png",
+    src: "/jogodinheiro2.png",
+    images: [
+      "/jogodinheiro1.png",
+    "/jogodinheiro2.png"
+    ],
     desc: "",
   },
 ]
