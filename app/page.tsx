@@ -82,9 +82,9 @@ export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
-    const updateMousePosition = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
+    const updateMousePosition = (e: MouseEvent) => {
+  setMousePosition({ x: e.clientX, y: e.clientY })
+}
     window.addEventListener("mousemove", updateMousePosition)
     return () => window.removeEventListener("mousemove", updateMousePosition)
   }, [])
@@ -144,10 +144,6 @@ export default function Home() {
                   Wess
                 </h1>
               </div>
-
-              <p className="text-gray-300 text-[17px] leading-relaxed max-w-lg drop-shadow-md bg-black/20 p-2 rounded-lg backdrop-blur-sm">
-                Transformando ideias em experiências visuais memoráveis através do design e da ilustração.
-              </p>
 
               <div className="flex flex-wrap items-center gap-6 mt-10">
                 <a href="#" className="bg-[#a855f7] hover:bg-purple-500 text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide flex items-center gap-3 transition-transform duration-300 hover:scale-105 shadow-[0_0_20px_rgba(168,85,247,0.4)]">
