@@ -93,7 +93,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="bg-gradient-to-b from-black via-black to-[#2a0845] text-white min-h-screen font-sans selection:bg-purple-500/30 relative">
+    <div className="bg-gradient-to-b from-black via-black to-[#2a0845] text-white min-h-screen font-sans selection:bg-purple-500/30 relative overflow-hidden">
       
       <div
         className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-300"
@@ -117,22 +117,26 @@ export default function Home() {
               alt="Background Arte"
               fill
               className="object-cover opacity-50"
-              style={{ objectPosition: "70% center" }}
+              style={{ objectPosition: "center" }}
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/70 to-black"></div>
           </div>
 
+          {/* Ajustado padding e direção no mobile */}
           <div className="w-full max-w-[1200px] flex flex-col md:flex-row justify-between items-center px-6 py-20 lg:py-32 gap-12 relative z-10">
-            <div className="flex flex-col max-w-[600px] z-10">
+            
+            {/* Ajustado o alinhamento para o centro no mobile e esquerda no desktop */}
+            <div className="flex flex-col max-w-[600px] z-10 items-center md:items-start text-center md:text-left w-full">
               <div className="flex items-center gap-3 border border-white/20 bg-black/40 backdrop-blur-sm rounded-full px-5 py-2 w-fit mb-8 shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#a855f7] animate-pulse"></span>
                 <span className="text-xs text-gray-200 font-semibold tracking-widest uppercase">DISPONÍVEL PARA FREELANCE</span>
               </div>
 
-              <div className="pl-16 flex flex-col mb-8 select-none cursor-default">
+              {/* Removido o pl-16 fixo, usando md:pl-16 */}
+              <div className="md:pl-16 flex flex-col mb-8 select-none cursor-default items-center md:items-start">
                 <h2
-                  className="text-white text-5xl lg:text-6xl font-extrabold tracking-tight mb-[-10px] ml-4 relative z-10"
+                  className="text-white text-5xl lg:text-6xl font-extrabold tracking-tight mb-[-10px] md:ml-4 relative z-10"
                   style={{ textShadow: '0 0 15px rgba(168, 85, 247, 0.9)' }}
                 >
                   iai, sou
@@ -149,7 +153,8 @@ export default function Home() {
                 </h1>
               </div>
 
-              <div className="flex flex-wrap items-center gap-6 mt-10">
+              {/* Centralizar botões no mobile */}
+              <div className="flex flex-wrap justify-center md:justify-start items-center gap-6 mt-6 md:mt-10">
                 <a href="#" className="bg-[#a855f7] hover:bg-purple-500 text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide flex items-center gap-3 transition-transform duration-300 hover:scale-105 shadow-[0_0_20px_rgba(168,85,247,0.4)]">
                   DESIGNER / ILUSTRADOR <FaArrowRight />
                 </a>
@@ -168,7 +173,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative flex justify-center items-center md:mr-10">
+            <div className="relative flex justify-center items-center md:mr-10 mt-8 md:mt-0">
               <div className="absolute inset-0 rounded-full bg-[#a855f7] blur-[100px] opacity-30"></div>
               <div className="relative p-2 rounded-full border border-white/20 bg-gradient-to-br from-white/10 to-transparent shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-sm">
                 <Image
@@ -176,7 +181,8 @@ export default function Home() {
                   alt="Wescley Costa"
                   width={400}
                   height={400}
-                  className="rounded-full object-cover"
+                  // Adicionado controle de tamanho responsivo (menor em mobile, grande no PC)
+                  className="rounded-full object-cover w-[250px] h-[250px] md:w-[400px] md:h-[400px]"
                 />
               </div>
             </div>
@@ -209,7 +215,7 @@ export default function Home() {
           </article>
         </section>
 
-        {/* ILUSTRAÇÕES (Movido para cá, ênfase no produto) */}
+        {/* ILUSTRAÇÕES */}
         <section
           id="ilustracoes"
           className="relative z-10 w-full max-w-[1200px] px-6 py-24 flex flex-col gap-12"
@@ -268,7 +274,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PROJETOS (Movido para cá, após ilustrações) */}
+        {/* PROJETOS */}
         <section id="projetos" className="relative z-10 w-full max-w-[1500px] mx-auto px-6 py-24 flex flex-col gap-12">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
@@ -360,7 +366,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* EXPERIÊNCIA (Movida para o final e compactada) */}
+        {/* EXPERIÊNCIA */}
         <section
           id="experiencia"
           className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24 flex flex-col gap-12"
@@ -372,7 +378,6 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            {/* Item 1 */}
             <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
               <h3 className="text-white font-bold text-xl tracking-tight mb-1">2018 - 2019</h3>
               <p className="text-[#a855f7] font-semibold mb-3 text-sm">Filial de Marketing (Mary Kay)</p>
@@ -386,7 +391,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Item 2 */}
             <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
               <h3 className="text-white font-bold text-xl tracking-tight mb-1">2021</h3>
               <p className="text-[#a855f7] font-semibold mb-3 text-sm">Localine LTDA</p>
@@ -400,7 +404,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Item 3 */}
             <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
               <h3 className="text-white font-bold text-xl tracking-tight mb-1">2021</h3>
               <p className="text-[#a855f7] font-semibold mb-3 text-sm">Prefeitura de Poço Redondo - SE</p>
@@ -413,7 +416,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Item 4 */}
             <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
               <h3 className="text-white font-bold text-xl tracking-tight mb-1">2022 - 2025</h3>
               <p className="text-[#a855f7] font-semibold mb-3 text-sm">Rede Xodó FM / Sistema RTV</p>
@@ -427,7 +429,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Item 5 */}
             <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
               <h3 className="text-white font-bold text-xl tracking-tight mb-1">2021 - 2025</h3>
               <p className="text-[#a855f7] font-semibold mb-3 text-sm">Banda Cintura Fina</p>
@@ -441,7 +442,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Item 6 */}
             <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
               <h3 className="text-white font-bold text-xl tracking-tight mb-1 flex items-center gap-2">
                 Atualmente
