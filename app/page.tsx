@@ -42,12 +42,11 @@ const portfolioItems = [
     src: "/PARA INSTAGRAM 3.png",
     images: [
       "/PARA INSTAGRAM 3.png",
-  "/WITCH 3.png",
-  "/PARA INSTAGRAM.png",
-  "/PARA INSTAGRAM BRANCA.png",
-  "/ARTE BANNER.png"
-
-],
+      "/WITCH 3.png",
+      "/PARA INSTAGRAM.png",
+      "/PARA INSTAGRAM BRANCA.png",
+      "/ARTE BANNER.png"
+    ],
     desc: ""
   },
   {
@@ -57,9 +56,9 @@ const portfolioItems = [
     src: "/jogodinheiro2.png",
     images: [
       "/jogodinheiro1.png",
-    "/jogodinheiro2.png"
+      "/jogodinheiro2.png"
     ],
-    desc: "",
+    desc: ""
   },
 ]
 
@@ -87,8 +86,8 @@ export default function Home() {
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
-  setMousePosition({ x: e.clientX, y: e.clientY })
-}
+      setMousePosition({ x: e.clientX, y: e.clientY })
+    }
     window.addEventListener("mousemove", updateMousePosition)
     return () => window.removeEventListener("mousemove", updateMousePosition)
   }, [])
@@ -107,6 +106,7 @@ export default function Home() {
 
       <div className="flex flex-col items-center gap-3">
 
+        {/* HERO SECTION */}
         <section
           id="home"
           className="relative w-full flex justify-center pt-24 min-h-screen items-center"
@@ -183,6 +183,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* SOBRE MIM */}
         <section
           id="sobre"
           className="relative z-10 w-full max-w-[1200px] px-6 py-24 flex flex-col gap-12"
@@ -208,188 +209,73 @@ export default function Home() {
           </article>
         </section>
 
+        {/* ILUSTRAÇÕES (Movido para cá, ênfase no produto) */}
         <section
-          id="experiencia"
-          className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24 flex flex-col gap-16 md:gap-20"
+          id="ilustracoes"
+          className="relative z-10 w-full max-w-[1200px] px-6 py-24 flex flex-col gap-12"
         >
-          <div className="flex items-center gap-4">
-            <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Experiência</h2>
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center justify-center gap-4">
+              <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight text-center">
+                Galeria de Ilustrações
+              </h2>
+              <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
+            </div>
           </div>
 
-          <div className="relative mt-4">
-            <div className="absolute left-[20px] md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 md:-translate-x-1/2 shadow-[0_0_15px_rgba(168,85,247,0.3)]"></div>
-
-            <div className="flex flex-col gap-16 md:gap-20">
-              
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="hidden md:block w-1/2 pr-16"></div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+            {ilustracoes.map((img) => (
+              <Dialog key={img.id}>
                 
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
-                  <FaBriefcase size={16} />
-                </div>
+                <DialogTrigger asChild>
+                  <button className="overflow-hidden rounded-md transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:z-10 relative group cursor-pointer bg-[#1a1a1a]/50 backdrop-blur-sm p-1">
+                    <Image
+                      src={img.src}
+                      alt="Ilustração miniatura"
+                      width={500}
+                      height={600}
+                      className="object-cover w-full h-[400px] rounded-sm transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
+                  </button>
+                </DialogTrigger>
 
-                <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
-                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">2018 - 2019</h3>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Filial de Marketing (Mary Kay)</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
-                      Atuei como designer gráfico com foco em demandas variadas do setor de marketing. Desenvolvi habilidades em gerenciamento e organização de processos de forma eficaz, lidando tanto com rotinas criativas quanto administrativas.
-                    </p>
-                    <div className="flex gap-2 flex-wrap relative z-10">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Excel</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <DialogContent className="bg-transparent border-none shadow-none p-0 w-[95vw] !max-w-[1400px] h-[90vh] flex justify-center items-center">
+                  <DialogHeader className="hidden">
+                    <DialogTitle>Ilustração Ampliada</DialogTitle>
+                    <DialogDescription>Visualização em tela cheia da arte de Wescley Costa</DialogDescription>
+                  </DialogHeader>
 
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
-                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">2021</h3>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Localine LTDA</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
-                      Responsável pelas plotagens em uma empresa de transporte, aplicando criatividade em designs funcionais. Foco em garantir o impacto visual, considerando aspectos rigorosos de durabilidade, legibilidade e adaptação a diferentes tipos de veículos e superfícies.
-                    </p>
-                    <div className="flex gap-2 flex-wrap relative z-10">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Premiere</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
-                    </div>
-                  </div>
-                </div>
+                  <DialogClose className="absolute top-0 right-0 md:top-2 md:right-2 z-50 p-3 bg-black/60 hover:bg-[#a855f7] border border-white/20 rounded-full text-white backdrop-blur-md transition-all duration-300 hover:scale-110 shadow-xl focus:outline-none">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    <span className="sr-only">Fechar</span>
+                  </DialogClose>
 
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
-                  <FaBriefcase size={16} />
-                </div>
-                
-                <div className="hidden md:block w-1/2 pl-16"></div>
-              </div>
-
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="hidden md:block w-1/2 pr-16"></div>
-                
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
-                  <FaBriefcase size={16} />
-                </div>
-
-                <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
-                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">2021</h3>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Prefeitura de Poço Redondo - SE</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
-                      Criação de projetos visuais para materiais impressos e campanhas para o Instagram. Atuação com foco em combining estética e funcionalidade para engajar o público local e transmitir as mensagens institucionais de forma clara e eficaz.
-                    </p>
-                    <div className="flex gap-2 flex-wrap relative z-10">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
-                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">2022 - 2025</h3>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Rede Xodó FM / Sistema RTV</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
-                      Desenvolvimento e implementação de projetos criativos, incluindo materiais gráficos e campanhas digitais. Atuação sob prazos desafiadores, colaborando com diferentes equipes para criar soluções que atendem às necessidades específicas da marca, inovando e impactando o público de maneira eficaz.
-                    </p>
-                    <div className="flex gap-2 flex-wrap relative z-10">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Premiere</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
-                  <FaBriefcase size={16} />
-                </div>
-                
-                <div className="hidden md:block w-1/2 pl-16"></div>
-              </div>
-
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="hidden md:block w-1/2 pr-16"></div>
-                
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
-                  <FaBriefcase size={16} />
-                </div>
-
-                <div className="w-full md:w-1/2 pl-16 md:pl-16 flex justify-start">
-                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">2021 - 2025</h3>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Banda Cintura Fina</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
-                      Responsável por toda a parte visual da marca, tanto digital quanto física. Criei conteúdo para o Instagram, desenvolvendo campanhas visuais que reforçaram a identidade da banda e engajaram o público, trabalhando em estreita colaboração com os membros para garantir que a estética refletisse sua essência e estilo musical.
-
-                    </p>
-                    <div className="flex gap-2 flex-wrap relative z-10">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Premiere</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">After Effects</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CorelDRAW</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">CapCut</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative flex flex-col md:flex-row items-center w-full group">
-                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:pr-16 flex justify-start md:justify-end">
-                  <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-8 w-full max-w-[480px] hover:-translate-y-2 transition-all duration-300 shadow-xl relative overflow-hidden">
-                    <div className="flex flex-col mb-3 relative z-10">
-                      <h3 className="text-white font-bold text-2xl tracking-tight">Atualmente</h3>
-                    </div>
-                    <p className="text-gray-300 font-semibold mb-4 text-[15px] relative z-10">Prefeitura de Poço Redondo - SE</p>
-                    <p className="text-gray-400 text-[15px] leading-relaxed mb-8 relative z-10">
-                        Criação de projetos visuais para materiais impressos e campanhas para o Instagram. Atuação com foco em combining estética e funcionalidade para engajar o público local e transmitir as mensagens institucionais de forma clara e eficaz.                    </p>
-                    <div className="flex gap-2 flex-wrap relative z-10">
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Photoshop</span>
-                      <span className="bg-[#2a1442] text-purple-300 text-[11px] font-bold tracking-wider uppercase px-3 py-1.5 rounded-full">Illustrator</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="absolute left-[20px] md:left-1/2 w-10 h-10 rounded-full bg-[#111111] border border-[#a855f7] flex items-center justify-center text-[#a855f7] -translate-x-1/2 z-10 group-hover:bg-[#a855f7] group-hover:text-white transition-all duration-300 shadow-[0_0_15px_rgba(168,85,247,0.5)] group-hover:scale-110">
-                  <FaBriefcase size={16} />
-                </div>
-                
-                <div className="hidden md:block w-1/2 pl-16"></div>
-              </div>
-
-            </div>
+                  <Image
+                    src={img.src}
+                    alt="Ilustração Ampliada"
+                    width={2000}
+                    height={2000}
+                    className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-md"
+                  />
+                </DialogContent>
+              </Dialog>
+            ))}
           </div>
         </section>
 
+        {/* PROJETOS (Movido para cá, após ilustrações) */}
         <section id="projetos" className="relative z-10 w-full max-w-[1500px] mx-auto px-6 py-24 flex flex-col gap-12">
           
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4">
                 <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
-                <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Portfólio</h2>
+                <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Projetos de Design</h2>
               </div>
               <p className="text-gray-400 max-w-xl text-[17px] leading-relaxed">
                 Uma seleção dos meus projetos favoritos recentes. Cada peça reflete uma busca
@@ -474,61 +360,103 @@ export default function Home() {
           </div>
         </section>
 
+        {/* EXPERIÊNCIA (Movida para o final e compactada) */}
         <section
-          id="ilustracoes"
-          className="relative z-10 w-full max-w-[1200px] px-6 py-24 flex flex-col gap-12"
+          id="experiencia"
+          className="relative z-10 w-full max-w-[1200px] mx-auto px-6 py-24 flex flex-col gap-12"
         >
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-center gap-4">
-              <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
-              <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight text-center">
-                Galeria de Ilustrações
-              </h2>
-              <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
-            </div>
+          <div className="flex items-center gap-4">
+            <span className="w-12 h-[3px] bg-[#a855f7] rounded-full shadow-[0_0_10px_rgba(168,85,247,0.8)]"></span>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">Experiência</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-            {ilustracoes.map((img) => (
-              <Dialog key={img.id}>
-                
-                <DialogTrigger asChild>
-                  <button className="overflow-hidden rounded-md transition-all duration-300 hover:border-purple-500/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:z-10 relative group cursor-pointer bg-[#1a1a1a]/50 backdrop-blur-sm p-1">
-                    <Image
-                      src={img.src}
-                      alt="Ilustração miniatura"
-                      width={500}
-                      height={600}
-                      className="object-cover w-full h-[400px] rounded-sm transition-transform duration-500 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300"></div>
-                  </button>
-                </DialogTrigger>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            {/* Item 1 */}
+            <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
+              <h3 className="text-white font-bold text-xl tracking-tight mb-1">2018 - 2019</h3>
+              <p className="text-[#a855f7] font-semibold mb-3 text-sm">Filial de Marketing (Mary Kay)</p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                Atuei como designer gráfico com foco em demandas variadas do setor de marketing. Desenvolvi habilidades em gerenciamento e organização de processos de forma eficaz, lidando tanto com rotinas criativas quanto administrativas.
+              </p>
+              <div className="flex gap-2 flex-wrap">
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Photoshop</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Illustrator</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Excel</span>
+              </div>
+            </div>
 
-                <DialogContent className="bg-transparent border-none shadow-none p-0 w-[95vw] !max-w-[1400px] h-[90vh] flex justify-center items-center">
-                  <DialogHeader className="hidden">
-                    <DialogTitle>Ilustração Ampliada</DialogTitle>
-                    <DialogDescription>Visualização em tela cheia da arte de Wescley Costa</DialogDescription>
-                  </DialogHeader>
+            {/* Item 2 */}
+            <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
+              <h3 className="text-white font-bold text-xl tracking-tight mb-1">2021</h3>
+              <p className="text-[#a855f7] font-semibold mb-3 text-sm">Localine LTDA</p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                Responsável pelas plotagens em uma empresa de transporte, aplicando criatividade em designs funcionais. Foco em garantir o impacto visual, considerando aspectos rigorosos de durabilidade e legibilidade.
+              </p>
+              <div className="flex gap-2 flex-wrap">
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Photoshop</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Illustrator</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">CorelDRAW</span>
+              </div>
+            </div>
 
-                  <DialogClose className="absolute top-0 right-0 md:top-2 md:right-2 z-50 p-3 bg-black/60 hover:bg-[#a855f7] border border-white/20 rounded-full text-white backdrop-blur-md transition-all duration-300 hover:scale-110 shadow-xl focus:outline-none">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18"></line>
-                      <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                    <span className="sr-only">Fechar</span>
-                  </DialogClose>
+            {/* Item 3 */}
+            <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
+              <h3 className="text-white font-bold text-xl tracking-tight mb-1">2021</h3>
+              <p className="text-[#a855f7] font-semibold mb-3 text-sm">Prefeitura de Poço Redondo - SE</p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                Criação de projetos visuais para materiais impressos e campanhas para o Instagram. Atuação com foco em combinar estética e funcionalidade para engajar o público local.
+              </p>
+              <div className="flex gap-2 flex-wrap">
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Photoshop</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Illustrator</span>
+              </div>
+            </div>
 
-                  <Image
-                    src={img.src}
-                    alt="Ilustração Ampliada"
-                    width={2000}
-                    height={2000}
-                    className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(0,0,0,0.8)] rounded-md"
-                  />
-                </DialogContent>
-              </Dialog>
-            ))}
+            {/* Item 4 */}
+            <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
+              <h3 className="text-white font-bold text-xl tracking-tight mb-1">2022 - 2025</h3>
+              <p className="text-[#a855f7] font-semibold mb-3 text-sm">Rede Xodó FM / Sistema RTV</p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                Desenvolvimento e implementação de projetos criativos, materiais gráficos e campanhas digitais. Atuação sob prazos desafiadores colaborando com diferentes equipes.
+              </p>
+              <div className="flex gap-2 flex-wrap">
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Photoshop</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Premiere</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">After Effects</span>
+              </div>
+            </div>
+
+            {/* Item 5 */}
+            <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
+              <h3 className="text-white font-bold text-xl tracking-tight mb-1">2021 - 2025</h3>
+              <p className="text-[#a855f7] font-semibold mb-3 text-sm">Banda Cintura Fina</p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                Responsável por toda a parte visual da marca (digital e física). Criei conteúdo para o Instagram, desenvolvendo campanhas visuais que reforçaram a identidade da banda e engajaram o público.
+              </p>
+              <div className="flex gap-2 flex-wrap">
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Illustrator</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Premiere</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">CapCut</span>
+              </div>
+            </div>
+
+            {/* Item 6 */}
+            <div className="bg-[#161616]/80 backdrop-blur-md border border-white/5 hover:border-purple-500/50 rounded-2xl p-6 transition-all duration-300 shadow-xl flex flex-col h-full">
+              <h3 className="text-white font-bold text-xl tracking-tight mb-1 flex items-center gap-2">
+                Atualmente
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              </h3>
+              <p className="text-[#a855f7] font-semibold mb-3 text-sm">Prefeitura de Poço Redondo - SE</p>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow">
+                Criação de projetos visuais para materiais impressos e campanhas para o Instagram. Foco em combinar estética e funcionalidade para transmitir mensagens institucionais de forma clara.
+              </p>
+              <div className="flex gap-2 flex-wrap">
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Photoshop</span>
+                <span className="bg-[#2a1442] text-purple-300 text-[10px] font-bold tracking-wider uppercase px-2 py-1 rounded-md">Illustrator</span>
+              </div>
+            </div>
+
           </div>
         </section>
 
